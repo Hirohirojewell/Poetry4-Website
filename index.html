@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Not Letting You Go</title>
+    <style>
+        /* Basic Body and Background Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            color: #fff;
+            background-color: #000; /* Black background for stars */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow: hidden; /* Prevent scroll bars */
+        }
+
+        /* Stars Animation */
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            animation: twinkle 1.5s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Rain Effect */
+        .rain {
+            position: absolute;
+            width: 1px;
+            height: 90px; /* Adjust height for rain */
+            background: rgba(255, 255, 255, 0.7);
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Create Random Stars */
+        .stars, .rains {
+            position: fixed; /* Fix position for scrolling */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none; /* Ensure clicks pass through */
+            z-index: 1; /* Keep behind other content */
+        }
+
+        /* Poem Container Styling */
+        .poem-container {
+            position: relative;
+            z-index: 2; /* Keep poem above the stars */
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            margin: 20px auto; /* Reduced margin for footer space */
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow-y: auto; /* Allow scrolling in poem container */
+            max-height: calc(100vh - 150px); /* Adjust for footer */
+            flex: 1; /* Allow poem-container to take available space */
+        }
+
+        h1 {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffc0cb;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6em;
+            text-align: center;
+        }
+
+        /* Footer Styling */
+        footer {
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.8);
+            color: #ffc0cb;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #ffc0cb;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars Animation Container -->
+    <div class="stars">
+        <!-- Generating 200 stars for the background -->
+        <script>
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDuration = Math.random() * 3 + 1 + 's';
+                document.querySelector('.stars').appendChild(star);
+            }
+        </script>
+    </div>
+
+    <!-- Rain Effect Container -->
+    <div class="rains">
+        <!-- Generating raindrops -->
+        <script>
+            for (let i = 0; i < 60; i++) { // Reduced from 90 to 60 for less rain
+                const rain = document.createElement('div');
+                rain.className = 'rain';
+                rain.style.left = Math.random() * 100 + '%';
+                rain.style.animationDuration = Math.random() * 0.5 + 0.5 + 's';
+                rain.style.animationDelay = Math.random() * 2 + 's';
+                document.querySelector('.rains').appendChild(rain);
+            }
+        </script>
+    </div>
+
+    <!-- Poem Content -->
+    <div class="poem-container">
+        <h1>I'm Not Letting You Go</h1>
+      <hr>
+        <p>
+            In fields of roses, I find you there,<br>
+            A gentle bloom, beyond compare.<br>
+            With every petal, soft and true,<br>
+            My heart whispers, "I belong to you."<br><br>
+          <hr>
+            Though winds may pull and storms may rise,<br>
+            I see forever in your eyes.<br>
+            With every beat, my love will grow,<br>
+            And I’m not letting you go.<br><br>
+          <hr>
+            In nights of dark and days of light,<br>
+            You are my warmth, my heart’s delight.<br>
+            A vow I make, a promise clear,<br>
+            Forever held, forever near.<br><br>
+          <hr>
+            So here I stand, with love to show,<br>
+            My dear, I’m not letting you go.<br><br>
+          <hr>
+            Through seasons' change and colors fade,<br>
+            With hands entwined, our steps are laid.<br>
+            The paths we walk, both high and low,<br>
+            Together still, where dreams will flow.<br><br>
+          <hr>
+            In winter’s chill or summer’s glow,<br>
+            I feel your presence, steady and slow.<br>
+            Each moment shared, a bond we sew,<br>
+            And I'm not letting you go.<br><br>
+          <hr>
+            You’re in each breath, in every sigh,<br>
+            The reason stars light up my sky.<br>
+            Though years may pass, and time may show,<br>
+            My love is true, and it will grow.<br><br>
+          <hr>
+            So take my hand, and let us be<br>
+            Two souls bound, eternally.<br>
+            No force can break, no tide can throw<br>
+            The strength within — I won’t let go.
+        </p>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        © 2024 Poem by Cary| for Jewell</a>
+    </footer>
+</body>
+</html>
